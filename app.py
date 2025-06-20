@@ -8,7 +8,7 @@ app = Flask(__name__)
 # Database Connection
 
 db = mysql.connector.connect(
-    host=os.environ['localhost'],
+    host = os.environ.get('DB_HOST', 'localhost')  # ✅ Safe and correct
     user=os.environ['root'],
     password=os.environ[''],
     database=os.environ['dmart'],
