@@ -1,16 +1,18 @@
 from flask import Flask, render_template, request
 import mysql.connector
+import os
 from datetime import date
 
 app = Flask(__name__)
 
 # Database Connection
+
 db = mysql.connector.connect(
-    host="localhost",
-    port=3306,
-    user="root",
-    password="",  # change if your MySQL has password
-    database="dmart"
+    host=os.environ['localhost'],
+    user=os.environ['root'],
+    password=os.environ[''],
+    database=os.environ['dmart'],
+    port=3306
 )
 cursor = db.cursor()
 
