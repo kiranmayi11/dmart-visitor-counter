@@ -7,6 +7,7 @@ app = Flask(__name__)
 # Database Connection
 db = mysql.connector.connect(
     host="localhost",
+    port=3306,
     user="root",
     password="",  # change if your MySQL has password
     database="dmart"
@@ -20,8 +21,7 @@ def index():
         gender = request.form["gender"]
         age = request.form["age"]
         comment = request.form["comment"]
-        cursor.execute("INSERT INTO visitors (gender, age, comment) VALUES (%s, %s, %s)",
-                       (gender, age, comment))
+        cursor.execute("INSERT INTO visitors (gender, age, comment) VALUES (%s, %s, %s)",(gender, age, comment))
         db.commit()
         return render_template("index.html", message="✅ Submitted successfully!")
     return render_template("index.html")
