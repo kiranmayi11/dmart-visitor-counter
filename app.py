@@ -9,9 +9,9 @@ app = Flask(__name__)
 
 db = mysql.connector.connect(
     host = os.environ.get('DB_HOST', 'localhost'),  # ✅ Safe and correct
-    user=os.environ['root'],
-    password=os.environ[''],
-    database=os.environ['dmart'],
+    user=os.environ.get('DB_USER', 'root'),
+    password=os.environ.get('DB_PASSWORD', ''),
+    database=os.environ.get('DB_NAME', 'dmart'),
     port=3306
 )
 cursor = db.cursor()
